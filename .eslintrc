@@ -1,0 +1,6 @@
+{
+  "extends": ["@ijsto", "plugin:react-hooks/recommended"],
+  "rules": {
+    "arrow-body-style": "off"
+  }
+}
