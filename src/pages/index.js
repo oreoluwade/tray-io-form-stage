@@ -1,23 +1,37 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { setFormStep } from '../redux/actions/form.action';
+import { useSelector } from 'react-redux';
+import { Spacer, Tabs } from '../components';
+import DoneTabContent from '../components/done-tab-content';
+import PrivacyForm from '../components/privacy-form';
+import UserForm from '../components/user-form';
 import styles from '../styles/Home.module.scss';
 
+const tabsWithSubmitButton = ['User', 'Privacy'];
+
 const Home = () => {
-  const dispatch = useDispatch();
-  const form = useSelector(state => state.form);
+  const selectedTab = useSelector(state => state.form.selectedTab);
+
+  const handleSubmit = () => {};
 
   return (
-    <>
-      <div className={styles.container}>Default Home page</div>
-      <button
-        type="button"
-        onClick={() => {
-          dispatch(setFormStep(form.step + 1));
-        }}
-      >
-        Clicl
-      </button>
-    </>
+    <div className={styles.container}>
+      <Tabs selectedTab="" />
+      <Spacer height="15px" />
+      <div className={styles.form_wrapper}>
+        {selectedTab === 'User' && <UserForm />}
+        {selectedTab === 'Privacy' && <PrivacyForm />}
+        {selectedTab === 'Done' && <DoneTabContent />}
+
+        {tabsWithSubmitButton.includes(selectedTab) && (
+          <button
+            className={styles.submit_button}
+            onClick={handleSubmit}
+            type="button"
+          >
+            SUBMIT
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
