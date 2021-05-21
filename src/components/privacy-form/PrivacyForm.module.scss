@@ -15,7 +15,11 @@
 
   &__label {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 13px;
+
+    @include media($large) {
+      font-size: 18px;
+    }
   }
 
   &__check {

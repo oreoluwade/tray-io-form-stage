@@ -4,9 +4,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 500px;
+  width: 100%;
   margin: 0 auto;
 
+  @include media($large) {
+    width: 500px;
+  }
 }
 
 .submit {

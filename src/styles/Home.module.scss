@@ -1,12 +1,17 @@
 @import 'imports.scss';
 
-
 .container {
-  padding: 50px;
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 100%;
+  padding: 10px;
+
   margin: 0 auto;
+
+  @include media($large) {
+    padding: 50px;
+    width: 60vw;
+  }
 }
 
 .form_wrapper {
@@ -14,5 +19,6 @@
   min-height: 300px;
   border: 2px solid $black;
   padding: 20px 30px 25px 20px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
