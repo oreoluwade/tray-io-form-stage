@@ -16,3 +16,14 @@
   flex-wrap: wrap;
   color: #00A109;
 }
+
+.error_text {
+  flex-wrap: wrap;
+  color: red;
+}
+
+.error__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
