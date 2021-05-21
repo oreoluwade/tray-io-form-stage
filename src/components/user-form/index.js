@@ -1,10 +1,14 @@
-import { useReducer } from 'react';
+import { useReducer, useState, useEffect } from 'react';
+import cn from 'classnames';
 import { internalStateReducer } from '../../helpers/utlility-functions';
 import Input from '../input';
 import Spacer from '../spacer';
 import styles from './UserForm.module.scss';
+import validateForm from '../../helpers/validator';
 
-const UserForm = () => {
+const UserForm = ({ handleSubmit }) => {
+  const [disabled, setDisabled] = useState(true);
+  const [formErrors, setFormErrors] = useState({});
   const [{ name, role, email, password }, setState] = useReducer(
     internalStateReducer,
     {
@@ -14,6 +18,17 @@ const UserForm = () => {
       password: ''
     }
   );
+
+  useEffect(() => {
+    const errors = validateForm({ name, email, password });
+    setFormErrors(errors);
+
+    if (Object.values(errors).every(err => err.length === 0)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [email, name, password]);
 
   const handleInputChange = e => {
     setState({ [e.target.id]: e.target.value });
@@ -29,6 +44,7 @@ const UserForm = () => {
         required
         type="text"
         placeholder="Enter your full name"
+        error={formErrors.name}
       />
 
       <Spacer height={20} />
@@ -52,6 +68,7 @@ const UserForm = () => {
         required
         type="email"
         placeholder="Enter your email"
+        error={formErrors.email}
       />
 
       <Spacer height={20} />
@@ -64,9 +81,23 @@ const UserForm = () => {
         required
         type="password"
         placeholder="Enter your password"
+        error={formErrors.password}
       />
 
       <Spacer height={80} />
+
+      <button
+        className={cn({
+          'submit-button': true,
+          [styles.submit]: true,
+          [styles['submit--disabled']]: disabled
+        })}
+        onClick={handleSubmit}
+        type="button"
+        disabled={disabled}
+      >
+        SUBMIT
+      </button>
     </div>
   );
 };

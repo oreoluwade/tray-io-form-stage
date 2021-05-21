@@ -18,10 +18,22 @@
   width: 100%;
   max-width: 500px;
   border: 2px solid $black;
-  padding: 2px;
+  padding-left: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   height: 35px;
+  line-height: 18px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 .required {
-  color: red
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: bold;
 }

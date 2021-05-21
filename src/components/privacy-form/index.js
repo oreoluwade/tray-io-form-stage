@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import cn from 'classnames';
 import Spacer from '../spacer';
 import styles from './PrivacyForm.module.scss';
 
-const PrivacyForm = () => {
+const PrivacyForm = ({ handleSubmit }) => {
   const [getTrayIoProductUpdate, setGetTrayIoProductUpdate] = useState(false);
   const [getOtherProductsUpdate, setGetOtherProductsUpdate] = useState(false);
 
@@ -50,6 +51,17 @@ const PrivacyForm = () => {
           Tray.io team
         </p>
       </div>
+
+      <button
+        className={cn({
+          'submit-button': true,
+          [styles.submit]: true
+        })}
+        onClick={handleSubmit}
+        type="button"
+      >
+        SUBMIT
+      </button>
     </div>
   );
 };

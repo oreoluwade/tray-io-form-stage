@@ -5,8 +5,6 @@ import PrivacyForm from '../components/privacy-form';
 import UserForm from '../components/user-form';
 import styles from '../styles/Home.module.scss';
 
-const tabsWithSubmitButton = ['User', 'Privacy'];
-
 const Home = () => {
   const selectedTab = useSelector(state => state.form.selectedTab);
 
@@ -17,19 +15,11 @@ const Home = () => {
       <Tabs selectedTab="" />
       <Spacer height="15px" />
       <div className={styles.form_wrapper}>
-        {selectedTab === 'User' && <UserForm />}
-        {selectedTab === 'Privacy' && <PrivacyForm />}
-        {selectedTab === 'Done' && <DoneTabContent />}
-
-        {tabsWithSubmitButton.includes(selectedTab) && (
-          <button
-            className={styles.submit_button}
-            onClick={handleSubmit}
-            type="button"
-          >
-            SUBMIT
-          </button>
+        {selectedTab === 'User' && <UserForm handleSubmit={handleSubmit} />}
+        {selectedTab === 'Privacy' && (
+          <PrivacyForm handleSubmit={handleSubmit} />
         )}
+        {selectedTab === 'Done' && <DoneTabContent />}
       </div>
     </div>
   );
