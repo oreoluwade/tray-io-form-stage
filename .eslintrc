@@ -1,8 +1,15 @@
 {
-  "extends": ["@ijsto", "plugin:react-hooks/recommended"],
+  "extends": ["@ijsto", "plugin:react-hooks/recommended", "plugin:cypress/recommended"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+},
   "rules": {
     "arrow-body-style": "off",
     "prettier/prettier": "off",
-    "sort-keys": "off"
+    "sort-keys": "off",
+    "cypress/no-unnecessary-waiting": "off"
   }
 }

@@ -48,6 +48,7 @@ const UserForm = () => {
         type="text"
         placeholder="Enter your full name"
         error={formErrors.name}
+        data-cy="name-input"
       />
 
       <Spacer height={20} />
@@ -59,6 +60,7 @@ const UserForm = () => {
         label="Role"
         type="text"
         placeholder="Enter your role (e.g Software Engineer)"
+        data-cy="role-input"
       />
 
       <Spacer height={20} />
@@ -72,6 +74,7 @@ const UserForm = () => {
         type="email"
         placeholder="Enter your email"
         error={formErrors.email}
+        data-cy="email-input"
       />
 
       <Spacer height={20} />
@@ -85,6 +88,7 @@ const UserForm = () => {
         type="password"
         placeholder="Enter your password"
         error={formErrors.password}
+        data-cy="password-input"
       />
 
       <Spacer height={80} />
@@ -98,6 +102,7 @@ const UserForm = () => {
         onClick={handleSubmit}
         type="button"
         disabled={disabled}
+        data-cy="submit-user-form"
       >
         SUBMIT
       </button>

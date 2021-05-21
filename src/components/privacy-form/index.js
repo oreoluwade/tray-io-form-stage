@@ -35,6 +35,7 @@ const PrivacyForm = () => {
             }
           }}
           aria-hidden="true"
+          data-cy="receive-product-updates-check"
         />
         <Spacer width={10} />
         <p className={styles.form__label}>
@@ -61,6 +62,7 @@ const PrivacyForm = () => {
             }
           }}
           aria-hidden="true"
+          data-cy="receive-communication-updates-check"
         />
         <Spacer width={10} />
         <p className={styles.form__label}>
@@ -76,6 +78,7 @@ const PrivacyForm = () => {
         })}
         onClick={handleSubmit}
         type="button"
+        data-cy="submit-privacy-form"
       >
         SUBMIT
       </button>
