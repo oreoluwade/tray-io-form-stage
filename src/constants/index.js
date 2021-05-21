@@ -1,1 +1,2 @@
 export const SET_FORM_STEP = 'SET_FORM_STEP';
+export const SET_SELECTED_TAB = 'SET_SELECTED_TAB';

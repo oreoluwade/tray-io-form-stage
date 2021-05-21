@@ -1,6 +1,7 @@
 const initialState = {
   form: {
-    step: 1
+    step: 1,
+    selectedTab: 'User'
   }
 };
 
