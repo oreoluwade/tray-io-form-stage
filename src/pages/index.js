@@ -8,17 +8,13 @@ import styles from '../styles/Home.module.scss';
 const Home = () => {
   const selectedTab = useSelector(state => state.form.selectedTab);
 
-  const handleSubmit = () => {};
-
   return (
     <div className={styles.container}>
       <Tabs selectedTab="" />
       <Spacer height="15px" />
       <div className={styles.form_wrapper}>
-        {selectedTab === 'User' && <UserForm handleSubmit={handleSubmit} />}
-        {selectedTab === 'Privacy' && (
-          <PrivacyForm handleSubmit={handleSubmit} />
-        )}
+        {selectedTab === 'User' && <UserForm />}
+        {selectedTab === 'Privacy' && <PrivacyForm />}
         {selectedTab === 'Done' && <DoneTabContent />}
       </div>
     </div>

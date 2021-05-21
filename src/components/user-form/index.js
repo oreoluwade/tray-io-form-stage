@@ -1,26 +1,21 @@
-import { useReducer, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import cn from 'classnames';
-import { internalStateReducer } from '../../helpers/utlility-functions';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from '../input';
 import Spacer from '../spacer';
 import styles from './UserForm.module.scss';
 import validateForm from '../../helpers/validator';
+import { setSelectedTab, setUserData } from '../../redux/actions/form.action';
 
-const UserForm = ({ handleSubmit }) => {
+const UserForm = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(state => state.form.data.user);
+
   const [disabled, setDisabled] = useState(true);
   const [formErrors, setFormErrors] = useState({});
-  const [{ name, role, email, password }, setState] = useReducer(
-    internalStateReducer,
-    {
-      name: '',
-      role: '',
-      email: '',
-      password: ''
-    }
-  );
 
   useEffect(() => {
-    const errors = validateForm({ name, email, password });
+    const errors = validateForm(userData);
     setFormErrors(errors);
 
     if (Object.values(errors).every(err => err.length === 0)) {
@@ -28,16 +23,24 @@ const UserForm = ({ handleSubmit }) => {
     } else {
       setDisabled(true);
     }
-  }, [email, name, password]);
+  }, [userData]);
 
   const handleInputChange = e => {
-    setState({ [e.target.id]: e.target.value });
+    dispatch(
+      setUserData({
+        [e.target.id]: e.target.value
+      })
+    );
+  };
+
+  const handleSubmit = () => {
+    dispatch(setSelectedTab('Privacy'));
   };
 
   return (
     <div className={styles.root}>
       <Input
-        value={name}
+        value={userData.name}
         id="name"
         handleInputChange={handleInputChange}
         label="Name"
@@ -50,7 +53,7 @@ const UserForm = ({ handleSubmit }) => {
       <Spacer height={20} />
 
       <Input
-        value={role}
+        value={userData.role}
         id="role"
         handleInputChange={handleInputChange}
         label="Role"
@@ -61,7 +64,7 @@ const UserForm = ({ handleSubmit }) => {
       <Spacer height={20} />
 
       <Input
-        value={email}
+        value={userData.email}
         id="email"
         handleInputChange={handleInputChange}
         label="Email"
@@ -74,7 +77,7 @@ const UserForm = ({ handleSubmit }) => {
       <Spacer height={20} />
 
       <Input
-        value={password}
+        value={userData.password}
         id="password"
         handleInputChange={handleInputChange}
         label="Password"

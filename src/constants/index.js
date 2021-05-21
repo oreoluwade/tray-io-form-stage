@@ -1,2 +1,3 @@
-export const SET_FORM_STEP = 'SET_FORM_STEP';
 export const SET_SELECTED_TAB = 'SET_SELECTED_TAB';
+export const SET_USER_DATA = 'SET_USER_DATA';
+export const SET_PRIVACY_DATA = 'SET_PRIVACY_DATA';

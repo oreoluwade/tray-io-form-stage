@@ -1,7 +1,13 @@
+import { useSelector } from 'react-redux';
 import Spacer from '../spacer';
 import styles from './DoneTabContent.module.scss';
 
 const DoneTabContent = () => {
+  const fullFormData = useSelector(state => state.form.data);
+
+  // Pretty Print Form data
+  console.log(JSON.stringify(fullFormData, null, 2));
+
   return (
     <div className={styles.root}>
       <img src="icons/checkmark.svg" alt="" className={styles.check} />

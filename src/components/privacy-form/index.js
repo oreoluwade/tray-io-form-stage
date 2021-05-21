@@ -1,25 +1,38 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import Spacer from '../spacer';
 import styles from './PrivacyForm.module.scss';
+import {
+  setPrivacyData,
+  setSelectedTab
+} from '../../redux/actions/form.action';
 
-const PrivacyForm = ({ handleSubmit }) => {
-  const [getTrayIoProductUpdate, setGetTrayIoProductUpdate] = useState(false);
-  const [getOtherProductsUpdate, setGetOtherProductsUpdate] = useState(false);
+const PrivacyForm = () => {
+  const dispatch = useDispatch();
+
+  const privacyData = useSelector(state => state.form.data.privacy);
+
+  const handleSubmit = () => {
+    dispatch(setSelectedTab('Done'));
+  };
 
   return (
     <div className={styles.root}>
       <div className={styles.form__row}>
         <img
           src={
-            getTrayIoProductUpdate
+            privacyData.receiveProductUpdates
               ? '/icons/checkbox-checked.svg'
               : '/icons/checkbox-unchecked.svg'
           }
           alt=""
           className={styles.form__check}
           onClick={() => {
-            setGetTrayIoProductUpdate(t => !t);
+            if (privacyData.receiveProductUpdates) {
+              dispatch(setPrivacyData({ receiveProductUpdates: false }));
+            } else {
+              dispatch(setPrivacyData({ receiveProductUpdates: true }));
+            }
           }}
           aria-hidden="true"
         />
@@ -34,14 +47,18 @@ const PrivacyForm = ({ handleSubmit }) => {
       <div className={styles.form__row}>
         <img
           src={
-            getOtherProductsUpdate
+            privacyData.receiveCommunicationUpdates
               ? '/icons/checkbox-checked.svg'
               : '/icons/checkbox-unchecked.svg'
           }
           alt=""
           className={styles.form__check}
           onClick={() => {
-            setGetOtherProductsUpdate(t => !t);
+            if (privacyData.receiveCommunicationUpdates) {
+              dispatch(setPrivacyData({ receiveCommunicationUpdates: false }));
+            } else {
+              dispatch(setPrivacyData({ receiveCommunicationUpdates: true }));
+            }
           }}
           aria-hidden="true"
         />
