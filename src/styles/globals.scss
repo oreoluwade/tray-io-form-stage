@@ -22,3 +22,11 @@ p, h1, h2, h3, h4, h5, h6, label {
 * {
   box-sizing: border-box;
 }
+
+.submit-button {
+  width: 100px;
+  height: 40px;
+  background-color: $green;
+  color: $white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}

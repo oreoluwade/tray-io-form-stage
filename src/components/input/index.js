@@ -15,7 +15,6 @@ const Input = ({
   return (
     <div className={styles.root}>
       <label htmlFor={id} className={styles.label}>
-        {/* {label} */}
         <p className={styles.label__text}>{label}</p>
         {required && (
           <>
@@ -36,6 +35,13 @@ const Input = ({
         id={id}
         className={styles.input}
       />
+      {error &&
+        error.length > 0 &&
+        error.map((err, idx) => (
+          <p className={styles.error} key={idx}>
+            {err}
+          </p>
+        ))}
     </div>
   );
 };
