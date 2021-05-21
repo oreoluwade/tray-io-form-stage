@@ -10,7 +10,8 @@ const Input = ({
   handleInputChange,
   value,
   type,
-  id
+  id,
+  ...restProps
 }) => {
   return (
     <div className={styles.root}>
@@ -34,6 +35,7 @@ const Input = ({
         placeholder={placeholder}
         id={id}
         className={styles.input}
+        {...restProps}
       />
       {error &&
         error.length > 0 &&

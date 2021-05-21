@@ -26,6 +26,7 @@ const Tabs = () => {
         className={getButtonClass('User')}
         name="User"
         onClick={handleTabClick}
+        data-cy="user-tab"
       >
         User
       </button>
@@ -34,6 +35,7 @@ const Tabs = () => {
         className={getButtonClass('Privacy')}
         name="Privacy"
         onClick={handleTabClick}
+        data-cy="privacy-tab"
       >
         Privacy
       </button>
@@ -42,6 +44,7 @@ const Tabs = () => {
         className={getButtonClass('Done')}
         name="Done"
         onClick={handleTabClick}
+        data-cy="done-tab"
       >
         Done
       </button>
