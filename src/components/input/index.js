@@ -14,7 +14,7 @@ const Input = ({
   ...restProps
 }) => {
   return (
-    <div className={styles.root}>
+    <div>
       <label htmlFor={id} className={styles.label}>
         <p className={styles.label__text}>{label}</p>
         {required && (
