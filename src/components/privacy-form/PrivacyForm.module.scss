@@ -1,0 +1,23 @@
+@import '../../styles/imports.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  &__check {
+    width: 20px;
+    height: 20px;
+  }
+}
