@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import cn from 'classnames';
-import styles from './Tabs.module.scss';
-import { setSelectedTab } from '../../redux/actions/form.action';
+import styles from './PageIndicator.module.scss';
 
-const Tabs = () => {
+const PageIndicator = () => {
+  const router = useRouter();
+
   const selectedTab = useSelector(state => state.form.selectedTab);
-  const dispatch = useDispatch();
 
   const getButtonClass = buttonName => {
     return cn({
@@ -16,7 +16,7 @@ const Tabs = () => {
   };
 
   const handleTabClick = e => {
-    dispatch(setSelectedTab(e.target.name));
+    router.push(e.target.name.toLowerCase());
   };
 
   return (
@@ -52,4 +52,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default PageIndicator;

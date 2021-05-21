@@ -5,7 +5,7 @@ import UserForm from '../components/user-form';
 import { setSelectedTab } from '../redux/actions/form.action';
 import styles from '../styles/Home.module.scss';
 
-const Home = () => {
+const User = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default User;

@@ -1,19 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
+import { useRouter } from 'next/router';
 import Spacer from '../spacer';
 import styles from './PrivacyForm.module.scss';
-import {
-  setPrivacyData,
-  setSelectedTab
-} from '../../redux/actions/form.action';
+import { setPrivacyData } from '../../redux/actions/form.action';
 
 const PrivacyForm = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const privacyData = useSelector(state => state.form.data.privacy);
 
   const handleSubmit = () => {
-    dispatch(setSelectedTab('Done'));
+    router.push('/done');
   };
 
   return (

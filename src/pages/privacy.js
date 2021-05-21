@@ -1,26 +1,26 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Spacer, PageIndicator } from '../components';
-import UserForm from '../components/user-form';
+import PrivacyForm from '../components/privacy-form';
 import { setSelectedTab } from '../redux/actions/form.action';
 import styles from '../styles/Home.module.scss';
 
-const Home = () => {
+const Privacy = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setSelectedTab('User'));
+    dispatch(setSelectedTab('Privacy'));
   }, [dispatch]);
 
   return (
     <div className={styles.container}>
-      <PageIndicator selectedTab="" />
+      <PageIndicator />
       <Spacer height="15px" />
       <div className={styles.form_wrapper}>
-        <UserForm />
+        <PrivacyForm />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Privacy;

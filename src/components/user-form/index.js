@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Input from '../input';
 import Spacer from '../spacer';
 import styles from './UserForm.module.scss';
 import validateForm from '../../helpers/validator';
-import { setSelectedTab, setUserData } from '../../redux/actions/form.action';
+import { setUserData } from '../../redux/actions/form.action';
 
 const UserForm = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const userData = useSelector(state => state.form.data.user);
 
   const [disabled, setDisabled] = useState(true);
@@ -34,7 +36,7 @@ const UserForm = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(setSelectedTab('Privacy'));
+    router.push('/privacy');
   };
 
   return (
