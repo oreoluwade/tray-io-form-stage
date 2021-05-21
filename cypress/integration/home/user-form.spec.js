@@ -1,7 +1,7 @@
 describe('Filling the user form', () => {
   beforeEach(() => {
-    cy.log('Visiting http://localhost:3000');
-    cy.visit('/');
+    cy.log('Visiting the user form');
+    cy.visit('/user');
   });
 
   it('Filling the form properly should activate the submit button and move to the privacy tab on submit', () => {

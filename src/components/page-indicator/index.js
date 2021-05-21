@@ -1,26 +1,12 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import styles from './PageIndicator.module.scss';
-import validateForm from '../../helpers/validator';
 
 const PageIndicator = () => {
   const router = useRouter();
-  const [formHasErrors, setFormHasErrors] = useState(true);
 
   const selectedTab = useSelector(state => state.form.selectedTab);
-  const fullFormData = useSelector(state => state.form.data);
-
-  const userData = fullFormData?.user;
-
-  useEffect(() => {
-    const formErrors = validateForm(userData);
-
-    if (Object.values(formErrors).every(errArr => !errArr.length)) {
-      setFormHasErrors(false);
-    }
-  }, [userData]);
 
   const getButtonClass = buttonName => {
     return cn({
@@ -34,12 +20,7 @@ const PageIndicator = () => {
   };
 
   return (
-    <div
-      className={cn({
-        [styles.root]: true,
-        [styles.root__not_done]: formHasErrors
-      })}
-    >
+    <div className={styles.root}>
       <button
         type="button"
         className={getButtonClass('User')}
@@ -58,17 +39,15 @@ const PageIndicator = () => {
       >
         Privacy
       </button>
-      {!formHasErrors && (
-        <button
-          type="button"
-          className={getButtonClass('Done')}
-          name="Done"
-          onClick={handleTabClick}
-          data-cy="done-tab"
-        >
-          Done
-        </button>
-      )}
+      <button
+        type="button"
+        className={getButtonClass('Done')}
+        name="Done"
+        onClick={handleTabClick}
+        data-cy="done-tab"
+      >
+        Done
+      </button>
     </div>
   );
 };
